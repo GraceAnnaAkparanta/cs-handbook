@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CS Handbook - Resume Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>CS Handbook</h1>
+    <nav>
+      <a href="#create">Create Resume</a>
+      <a href="#improve">Improve Resume</a>
+      <a href="#tailor">Tailor to Job</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="create">
+      <h2>Create Your Resume</h2>
+      <form id="create-form">
+        <input type="text" placeholder="Full Name" required><br>
+        <input type="text" placeholder="Email" required><br>
+        <textarea placeholder="Experience"></textarea><br>
+        <button type="submit">Generate Resume</button>
+      </form>
+    </section>
+
+    <section id="improve">
+      <h2>Improve Existing Resume</h2>
+      <textarea placeholder="Paste your resume here..."></textarea><br>
+      <button>Get Suggestions</button>
+    </section>
+
+    <section id="tailor">
+      <h2>Tailor Resume to a Job</h2>
+      <textarea placeholder="Paste your resume here..."></textarea><br>
+      <textarea placeholder="Paste job description here..."></textarea><br>
+      <button>Tailor Resume</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

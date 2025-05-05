@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+      { "source": "/", "destination": "/frontend/index.html" },
+      { "source": "/create", "destination": "/frontend/create.html" },
+      { "source": "/improve", "destination": "/frontend/improve.html" },
+      { "source": "/test", "destination": "/frontend/test.html" },
+      { "source": "/tailor", "destination": "/frontend/tailor.html" }
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false
+  }
+  

@@ -1,0 +1,22 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .sidebar {
+    min-height: 100vh;
+  }
+  
+  .nav-link {
+    font-size: 1.1rem;
+    padding: 10px 0;
+    color: #333;
+  }
+  
+  .nav-link:hover {
+    color: #007bff;
+  }
+  
+  main {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+  }

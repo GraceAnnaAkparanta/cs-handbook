@@ -40,8 +40,16 @@ st.markdown("""
 
 # --- Sections ---
 if section == "🏠 Home":
-    st.title("🏠 Welcome to the CS Handbook")
-    st.write("Use the sidebar to explore resume tools and AI-powered support.")
+    st.title("🏠 Welcome to the CS Handbook Resume Hub")
+    st.markdown("""
+        This is your personal toolkit for building strong, job-ready resumes. Whether you’re starting from scratch, refining your resume, or tailoring it for a specific job, this web app has you covered.
+
+        **📝 Create Resume:** Use a guided form to build your resume.  
+        **📄 Improve Resume:** Get AI-powered suggestions and a color-coded score to improve your bullet points.  
+        **🎯 Tailor Resume:** Match your resume to a job description with smart comparisons.  
+
+        Use the sidebar to explore resume tools and AI-powered support.
+    """)
 
 elif section == "📝 Create Resume":
     st.title("📝 Create Resume")
@@ -90,8 +98,21 @@ elif section == "🎯 Tailor Resume":
 
 elif section == "💬 Chat With AI":
     st.title("💬 Chat With AI")
-    st.write("🚧 This feature will be available soon!")
+    st.markdown("Ask questions about technical concepts, CS topics, job prep, or anything else!")
+    
+    user_input = st.text_input("💬 Ask me anything:")
+    
+    if user_input:
+        with st.spinner("Thinking..."):
+            completion = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[{"role": "user", "content": user_input}]
+            )
+            answer = completion.choices[0].message.content
+            st.success("✅ Response:")
+            st.markdown(answer)
 
 # Footer
 st.markdown("---")
+st.markdown("🔍 *Note: This tool uses AI to provide suggestions. Always review critically and get feedback from peers.*")
 st.markdown("[← Back to CS Handbook Home](#)")

@@ -1,5 +1,7 @@
+streamlit
 fastapi
 python-dotenv
 openai
 PyPDF2
 uvicorn
+python-dotenv

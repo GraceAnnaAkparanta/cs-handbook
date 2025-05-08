@@ -53,7 +53,7 @@ st.markdown("""
 if section == "🏠 Home":
     st.title("🏠 Welcome to the CS Handbook Resume Hub")
     st.markdown("""
-        This is your personal toolkit for building strong, job-ready resumes. Whether you’re starting from scratch, refining your resume, or tailoring it for a specific job, this web app has you covered.
+        This is your personal toolkit for building strong, job-ready resumes. Whether you’re starting from scratch, refining your resume, or tailoring it for a specific job, this open-source Python framework has you covered.
 
         **📝 Create Resume:** Use a guided form to build your resume.  
         **📄 Improve Resume:** Get AI-powered suggestions and a color-coded score to improve your bullet points.  

@@ -1,0 +1,53 @@
+from fastapi import FastAPI, File, UploadFile, Form
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+import os
+from dotenv import load_dotenv
+import PyPDF2
+from openai import OpenAI
+import tempfile
+
+load_dotenv()
+app = FastAPI()
+
+# Allow frontend to call backend from browser
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # You can restrict this to ["http://localhost:5500"] later
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # Match your .env variable
+
+@app.post("/improve-resume")
+async def improve_resume(
+    resume: UploadFile = File(...),
+    desired_role: str = Form(...)
+):
+    resume_text = ""
+
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_file:
+        temp_file.write(await resume.read())
+        temp_file_path = temp_file.name
+
+    with open(temp_file_path, "rb") as f:
+        pdf_reader = PyPDF2.PdfReader(f)
+        for page in pdf_reader.pages:
+            resume_text += page.extract_text() or ""
+
+    prompt = (
+        f"Here is a resume:\n\n{resume_text}\n\n"
+        f"Suggest improvements for someone applying to a '{desired_role}' role. "
+        f"Use the XYZ format (Accomplished X by doing Y as measured by Z). "
+        f"Only list improved bullet points."
+    )
+
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt}]
+    )
+
+    return JSONResponse(content={
+        "improved_bullets": completion.choices[0].message.content.strip()
+    })

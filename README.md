@@ -1,4 +1,4 @@
-# CS-Handbook
+<!-- # CS-Handbook
 
 **CS-Handbook** is a lightweight web application to help students improve their resumes when applying to tech-related roles.
 
@@ -12,4 +12,4 @@
 
 - **Frontend**: HTML, CSS, JavaScript (Vanilla)
 - **Backend**: Python, Streamlit, OpenAI GPT-4
-- **Environment Management**: `.env` for API key handling
+- **Environment Management**: `.env` for API key handling -->

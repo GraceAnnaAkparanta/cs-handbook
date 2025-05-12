@@ -61,17 +61,17 @@ elif st.session_state.page == "Create":
     st.subheader("Step 1: Basic Information")
 
     # Personal Info
-    first_name = st.text_input("First Name (Preferred)", placeholder="e.g., Gracey")
-    last_name = st.text_input("Last Name", placeholder="e.g., Akparanta")
-    email = st.text_input("Email", placeholder="e.g., gracey@example.com")
+    first_name = st.text_input("First Name (Preferred)", placeholder="e.g., John")
+    last_name = st.text_input("Last Name", placeholder="e.g., Doe")
+    email = st.text_input("Email", placeholder="e.g., JohnDoe@example.com")
     phone = st.text_input("Phone Number", placeholder="e.g., (123) 456-7890")
-    github = st.text_input("GitHub URL", placeholder="e.g., https://github.com/GraceAnnaAkparanta")
+    github = st.text_input("GitHub URL", placeholder="e.g., https://github.com/JohnDoe")
 
     st.subheader("Step 2: Education")
 
     school = st.text_input("University/College Name", placeholder="e.g., University of XYZ")
     degree = st.text_input("Degree & Major", placeholder="e.g., B.S. in Computer Science")
-    grad_date = st.text_input("Expected Graduation Date", placeholder="e.g., May 2025")
+    grad_date = st.text_input("Expected Graduation Date", placeholder="e.g., May 2x2x")
 
     st.subheader("Step 3: Add Summary (Optional)")
     summary = st.text_area("Professional Summary", placeholder="e.g., Passionate CS student with experience in...")

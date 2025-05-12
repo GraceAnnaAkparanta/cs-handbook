@@ -72,7 +72,6 @@ elif st.session_state.page == "Create":
     school = st.text_input("University/College Name", placeholder="e.g., University of XYZ")
     degree = st.text_input("Degree & Major", placeholder="e.g., B.S. in Computer Science")
     grad_date = st.text_input("Expected Graduation Date", placeholder="e.g., May 2x2x")
-
     st.subheader("Step 3: Add Summary (Optional)")
     summary = st.text_area("Professional Summary", placeholder="e.g., Passionate CS student with experience in...")
 
@@ -83,7 +82,7 @@ elif st.session_state.page == "Create":
 
         resume_text = f"""
 **{first_name} {last_name}**  
-📧 {email} | 📞 {phone} | 🌐 {github}
+ {email} | {phone} | {github}
 
 ---
 

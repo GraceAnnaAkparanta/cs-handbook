@@ -56,7 +56,7 @@ if st.session_state.page == "Home":
     """)
 
 # Create Resume
-elif section == "📝 Create Resume":
+elif section == "Create":
     st.title("📝 Create Your Resume")
     st.subheader("Step 1: Basic Information")
 

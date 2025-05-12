@@ -56,9 +56,55 @@ if st.session_state.page == "Home":
     """)
 
 # Create Resume
-elif st.session_state.page == "Create":
-    st.title("📝 Create Resume")
-    st.write("🚧 This feature is coming soon!")
+elif section == "📝 Create Resume":
+    st.title("📝 Create Your Resume")
+    st.subheader("Step 1: Basic Information")
+
+    # Personal Info
+    first_name = st.text_input("First Name (Preferred)", placeholder="e.g., Gracey")
+    last_name = st.text_input("Last Name", placeholder="e.g., Akparanta")
+    email = st.text_input("Email", placeholder="e.g., gracey@example.com")
+    phone = st.text_input("Phone Number", placeholder="e.g., (123) 456-7890")
+    github = st.text_input("GitHub URL", placeholder="e.g., https://github.com/GraceAnnaAkparanta")
+
+    st.subheader("Step 2: Education")
+
+    school = st.text_input("University/College Name", placeholder="e.g., University of XYZ")
+    degree = st.text_input("Degree & Major", placeholder="e.g., B.S. in Computer Science")
+    grad_date = st.text_input("Expected Graduation Date", placeholder="e.g., May 2025")
+
+    st.subheader("Step 3: Add Summary (Optional)")
+    summary = st.text_area("Professional Summary", placeholder="e.g., Passionate CS student with experience in...")
+
+    # Submit and Preview
+    if st.button("📄 Generate Resume Preview"):
+        st.markdown("---")
+        st.subheader("📄 Resume Preview")
+
+        resume_text = f"""
+**{first_name} {last_name}**  
+📧 {email} | 📞 {phone} | 🌐 {github}
+
+---
+
+### 🎓 Education
+**{school}**  
+{degree}  
+Expected Graduation: {grad_date}
+
+"""
+
+        if summary:
+            resume_text += f"""
+---
+
+### 💡 Summary
+{summary}
+"""
+
+        st.code(resume_text, language="markdown")
+        st.success("✅ This is a preview. Copy or export it in the future!")
+
 
 # Improve Resume
 elif st.session_state.page == "Improve":

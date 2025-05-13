@@ -72,7 +72,22 @@ elif st.session_state.page == "Create":
     school = st.text_input("University/College Name", placeholder="e.g., University of XYZ")
     degree = st.text_input("Degree & Major", placeholder="e.g., B.S. in Computer Science")
     grad_date = st.text_input("Expected Graduation Date", placeholder="e.g., May 2x2x")
-    st.subheader("Step 3: Add Summary (Optional)")
+
+    st.subheader("Step 3: Experience")
+
+    # Experience Info
+    job_title = st.text_input("Job Title", placeholder="e.g., Software Engineering Intern")
+    company_name = st.text_input("Company Name", placeholder="e.g., Google")
+    start_date = st.text_input("Start Date", placeholder="e.g., June 2024")
+    end_date = st.text_input("End Date", placeholder="e.g., August 2024 or Present")
+
+    # Experience bullet points - Allow up to 3 for now
+    st.markdown("Describe your responsibilities or accomplishments (use action verbs and keep it concise):")
+    bullet_1 = st.text_area("Bullet Point 1", placeholder="e.g., Developed a full-stack web app using React and Flask.")
+    bullet_2 = st.text_area("Bullet Point 2", placeholder="e.g., Collaborated with cross-functional teams to define product requirements.")
+    bullet_3 = st.text_area("Bullet Point 3", placeholder="e.g., Improved API response time by 40% through optimization.")
+
+    st.subheader("Step 4: Add Summary (Optional)")
     summary = st.text_area("Professional Summary", placeholder="e.g., Passionate CS student with experience in...")
 
     # Submit and Preview
@@ -80,9 +95,10 @@ elif st.session_state.page == "Create":
         st.markdown("---")
         st.subheader("📄 Resume Preview")
 
+        # Start formatting resume output as Markdown
         resume_text = f"""
 **{first_name} {last_name}**  
- {email} | {phone} | {github}
+{email} | {phone} | {github}
 
 ---
 
@@ -90,10 +106,10 @@ elif st.session_state.page == "Create":
 **{school}**  
 {degree}  
 Expected Graduation: {grad_date}
-
 """
 
-        if summary:
+        # Add Summary if provided
+        if summary != "":
             resume_text += f"""
 ---
 
@@ -101,9 +117,27 @@ Expected Graduation: {grad_date}
 {summary}
 """
 
+        # Add Experience if job title and company are provided
+        if job_title != "" and company_name != "":
+            resume_text += f"""
+---
+
+### 💼 Experience
+**{job_title}**, {company_name}  
+{start_date} – {end_date}
+"""
+
+            # Add bullet points if any are written
+            if bullet_1 != "":
+                resume_text += f"- {bullet_1}\n"
+            if bullet_2 != "":
+                resume_text += f"- {bullet_2}\n"
+            if bullet_3 != "":
+                resume_text += f"- {bullet_3}\n"
+
+        # Display the formatted resume
         st.code(resume_text, language="markdown")
         st.success("✅ This is a preview. Copy or export it in the future!")
-
 
 # Improve Resume
 elif st.session_state.page == "Improve":

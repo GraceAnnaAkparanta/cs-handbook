@@ -46,14 +46,14 @@ def extract_text_from_pdf(file):
 # Home
 if st.session_state.page == "Home":
     st.title("🏠 Welcome to the CS Handbook Resume Hub")
-    st.markdown(\"""
+    st.markdown("""
         This tool helps you build, improve, and tailor resumes for tech jobs.
 
         **📝 Create Resume** - Start fresh with a guided form  
         **📄 Improve Resume** - Upload your resume and get suggestions  
         **🎯 Tailor Resume** - Align your resume to a specific job  
         **💬 Chat With AI** - Ask questions about anything CS-related
-    \""")
+    """)
 
 # Create Resume
 elif st.session_state.page == "Create":
@@ -72,20 +72,8 @@ elif st.session_state.page == "Create":
     school = st.text_input("University/College Name", placeholder="e.g., University of XYZ")
     degree = st.text_input("Degree & Major", placeholder="e.g., B.S. in Computer Science")
     grad_date = st.text_input("Expected Graduation Date", placeholder="e.g., May 2x2x")
-
     st.subheader("Step 3: Add Summary (Optional)")
     summary = st.text_area("Professional Summary", placeholder="e.g., Passionate CS student with experience in...")
-
-    st.subheader("Step 4: Add Experience")
-    exp_company = st.text_input("Company/Organization Name", placeholder="e.g., Google")
-    exp_start = st.text_input("Start Date", placeholder="e.g., June 2023")
-    exp_end = st.text_input("End Date", placeholder="e.g., August 2023")
-    exp_desc = st.text_area("Description / Bullet Points", placeholder="e.g., Developed a full-stack app using Python and React...")
-
-    st.subheader("Step 5: Add Project")
-    proj_name = st.text_input("Project Name", placeholder="e.g., Weather App")
-    proj_func = st.text_area("Project Functionality", placeholder="e.g., Displays real-time weather using API...")
-    proj_link = st.text_input("GitHub Link", placeholder="e.g., https://github.com/JohnDoe/weather-app")
 
     # Submit and Preview
     if st.button("📄 Generate Resume Preview"):
@@ -94,7 +82,7 @@ elif st.session_state.page == "Create":
 
         resume_text = f"""
 **{first_name} {last_name}**  
-{email} | {phone} | {github}
+ {email} | {phone} | {github}
 
 ---
 
@@ -102,6 +90,7 @@ elif st.session_state.page == "Create":
 **{school}**  
 {degree}  
 Expected Graduation: {grad_date}
+
 """
 
         if summary:
@@ -112,27 +101,9 @@ Expected Graduation: {grad_date}
 {summary}
 """
 
-        if exp_company and exp_start and exp_end and exp_desc:
-            resume_text += f"""
----
-
-### 💼 Experience
-**{exp_company}**  
-{exp_start} - {exp_end}  
-{exp_desc}
-"""
-
-        if proj_name and proj_func and proj_link:
-            resume_text += f"""
----
-
-### 🛠️ Projects
-[{proj_name}]({proj_link})  
-{proj_func}
-"""
-
         st.code(resume_text, language="markdown")
         st.success("✅ This is a preview. Copy or export it in the future!")
+
 
 # Improve Resume
 elif st.session_state.page == "Improve":
@@ -146,7 +117,7 @@ elif st.session_state.page == "Improve":
         resume_text = extract_text_from_pdf(uploaded_file)
 
         prompt = (
-            f"Here's a resume:\\n\\n{resume_text}\\n\\n"
+            f"Here's a resume:\n\n{resume_text}\n\n"
             f"Suggest bullet point improvements for the role of '{role}'. "
             f"Use the XYZ format (Accomplished X by doing Y as measured by Z)."
         )
@@ -173,8 +144,8 @@ elif st.session_state.page == "Tailor":
         resume_text = extract_text_from_pdf(uploaded_file)
 
         prompt = (
-            f"Here is a resume:\\n\\n{resume_text}\\n\\n"
-            f"And this is a job description:\\n\\n{job_desc}\\n\\n"
+            f"Here is a resume:\n\n{resume_text}\n\n"
+            f"And this is a job description:\n\n{job_desc}\n\n"
             f"Suggest edits and new bullet points to match the job. Use XYZ format."
         )
 
@@ -207,10 +178,3 @@ elif st.session_state.page == "Chat":
 # Footer
 st.markdown("---")
 st.markdown("🔍 *This tool uses AI. Always double-check results before using.*")
-
-
-# Save the updated file
-with open("/mnt/data/app.py", "w") as f:
-    f.write(updated_app_py)
-
-"/mnt/data/app.py"

@@ -143,6 +143,15 @@ Expected Graduation: {grad_date}
         resume_text += f"""
 ---
 
+# Set default values so Pylance knows these variables exist
+bullet_3_1 = "'
+bullet_3_2 = ""
+bullet_3_3 = ""
+job_title_3 = ""
+company_name_3 = ""
+start_date_3 = ""
+end_date_3 = ""
+
 ### 💼 Experience
 **{job_title_1}**, {company_name_1}  
 {start_date_1} – {end_date_1}

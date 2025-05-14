@@ -195,7 +195,7 @@ Expected Graduation: {grad_date}
 
 # Improve Resume
 elif st.session_state.page == "Improve":
-st.title("📄 Improve Resume")
+    st.title("📄 Improve Resume")
 st.subheader("Upload your resume and get better bullet points")
 
 role = st.text_input("Target Job Title", placeholder="e.g., Software Engineer")

@@ -202,7 +202,7 @@ role = st.text_input("Target Job Title", placeholder="e.g., Software Engineer")
 uploaded_file = st.file_uploader("Upload your resume (PDF)", type=["pdf"])
 
 if uploaded_file and role:
-resume_text = extract_text_from_pdf(uploaded_file)
+    resume_text = extract_text_from_pdf(uploaded_file)
 
 prompt = (
     f"Here's a resume:\n\n{resume_text}\n\n"

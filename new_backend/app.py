@@ -75,6 +75,15 @@ elif st.session_state.page == "Create":
 
     st.subheader("Step 3: Experience")
 
+# Set default values so Pylance knows these variables exist
+bullet_1_1 = ""
+bullet_1_2 = ""
+bullet_1_3 = ""
+job_title_1 = ""
+company_name_1 = ""
+start_date_1 = ""
+end_date_1 = ""
+
 # ---- EXPERIENCE ENTRY 1 ----
 st.markdown("#### 🔹 Experience 1")
 job_title_1 = st.text_input("Job Title (1)", placeholder="e.g., Software Engineer Intern")
@@ -84,6 +93,16 @@ end_date_1 = st.text_input("End Date (1)", placeholder="e.g., August 2024 or Pre
 bullet_1_1 = st.text_area("Bullet Point 1 (1)", placeholder="e.g., Developed internal dashboard using Python.")
 bullet_1_2 = st.text_area("Bullet Point 2 (1)", placeholder="e.g., Worked on cloud deployment pipelines.")
 bullet_1_3 = st.text_area("Bullet Point 3 (1)", placeholder="e.g., Participated in daily agile standups.")
+
+
+# Set default values so Pylance knows these variables exist
+bullet_2_1 = ""
+bullet_2_2 = ""
+bullet_2_3 = ""
+job_title_2 = ""
+company_name_2 = ""
+start_date_2 = ""
+end_date_2 = ""
 
 # ---- EXPERIENCE ENTRY 2 (optional) ----
 add_exp2 = st.checkbox("➕ Add Another Experience")
@@ -97,6 +116,15 @@ if add_exp2:
     bullet_2_1 = st.text_area("Bullet Point 1 (2)", placeholder="e.g., Resolved client technical issues quickly.")
     bullet_2_2 = st.text_area("Bullet Point 2 (2)", placeholder="e.g., Managed user accounts and hardware.")
     bullet_2_3 = st.text_area("Bullet Point 3 (2)", placeholder="e.g., Automated common support scripts.")
+
+# Set default values so Pylance knows these variables exist
+bullet_3_1 = ""
+bullet_3_2 = ""
+bullet_3_3 = ""
+job_title_3 = ""
+company_name_3 = ""
+start_date_3 = ""
+end_date_3 = ""
 
 # ---- EXPERIENCE ENTRY 3 (optional) ----
 add_exp3 = st.checkbox("➕ Add One More Experience")
@@ -142,16 +170,6 @@ Expected Graduation: {grad_date}
     if job_title_1 != "" and company_name_1 != "":
         resume_text += f"""
 ---
-
-# Set default values so Pylance knows these variables exist
-bullet_3_1 = "'
-bullet_3_2 = ""
-bullet_3_3 = ""
-job_title_3 = ""
-company_name_3 = ""
-start_date_3 = ""
-end_date_3 = ""
-
 ### 💼 Experience
 **{job_title_1}**, {company_name_1}  
 {start_date_1} – {end_date_1}

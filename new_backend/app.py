@@ -215,54 +215,6 @@ Expected Graduation: {grad_date}
     st.subheader("Step 4: Add Summary (Optional)")
     summary = st.text_area("Professional Summary", placeholder="e.g., Passionate CS student with experience in...")
 
-    # Submit and Preview
-    if st.button("📄 Generate Resume Preview"):
-        st.markdown("---")
-        st.subheader("📄 Resume Preview")
-
-        # Start formatting resume output as Markdown
-        resume_text = f"""
-**{first_name} {last_name}**  
-{email} | {phone} | {github}
-
----
-
-### 🎓 Education
-**{school}**  
-{degree}  
-Expected Graduation: {grad_date}
-"""
-
-        # Add Summary if provided
-        if summary != "":
-            resume_text += f"""
----
-
-### 💡 Summary
-{summary}
-"""
-
-        # Add Experience if job title and company are provided
-        if job_title != "" and company_name != "":
-            resume_text += f"""
----
-
-### 💼 Experience
-**{job_title}**, {company_name}  
-{start_date} – {end_date}
-"""
-
-            # Add bullet points if any are written
-            if bullet_1 != "":
-                resume_text += f"- {bullet_1}\n"
-            if bullet_2 != "":
-                resume_text += f"- {bullet_2}\n"
-            if bullet_3 != "":
-                resume_text += f"- {bullet_3}\n"
-
-        # Display the formatted resume
-        st.code(resume_text, language="markdown")
-        st.success("✅ This is a preview. Copy or export it in the future!")
 
 # Improve Resume
 elif st.session_state.page == "Improve":

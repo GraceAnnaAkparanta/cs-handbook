@@ -75,17 +75,115 @@ elif st.session_state.page == "Create":
 
     st.subheader("Step 3: Experience")
 
-    # Experience Info
-    job_title = st.text_input("Job Title", placeholder="e.g., Software Engineering Intern")
-    company_name = st.text_input("Company Name", placeholder="e.g., Google")
-    start_date = st.text_input("Start Date", placeholder="e.g., June 2024")
-    end_date = st.text_input("End Date", placeholder="e.g., August 2024 or Present")
+# ---- EXPERIENCE ENTRY 1 ----
+st.markdown("#### 🔹 Experience 1")
+job_title_1 = st.text_input("Job Title (1)", placeholder="e.g., Software Engineer Intern")
+company_name_1 = st.text_input("Company Name (1)", placeholder="e.g., Google")
+start_date_1 = st.text_input("Start Date (1)", placeholder="e.g., June 2024")
+end_date_1 = st.text_input("End Date (1)", placeholder="e.g., August 2024 or Present")
+bullet_1_1 = st.text_area("Bullet Point 1 (1)", placeholder="e.g., Developed internal dashboard using Python.")
+bullet_1_2 = st.text_area("Bullet Point 2 (1)", placeholder="e.g., Worked on cloud deployment pipelines.")
+bullet_1_3 = st.text_area("Bullet Point 3 (1)", placeholder="e.g., Participated in daily agile standups.")
 
-    # Experience bullet points - Allow up to 3 for now
-    st.markdown("Describe your responsibilities or accomplishments (use action verbs and keep it concise):")
-    bullet_1 = st.text_area("Bullet Point 1", placeholder="e.g., Developed a full-stack web app using React and Flask.")
-    bullet_2 = st.text_area("Bullet Point 2", placeholder="e.g., Collaborated with cross-functional teams to define product requirements.")
-    bullet_3 = st.text_area("Bullet Point 3", placeholder="e.g., Improved API response time by 40% through optimization.")
+# ---- EXPERIENCE ENTRY 2 (optional) ----
+add_exp2 = st.checkbox("➕ Add Another Experience")
+
+if add_exp2:
+    st.markdown("#### 🔹 Experience 2")
+    job_title_2 = st.text_input("Job Title (2)", placeholder="e.g., IT Support Specialist")
+    company_name_2 = st.text_input("Company Name (2)", placeholder="e.g., Local Tech Co.")
+    start_date_2 = st.text_input("Start Date (2)", placeholder="e.g., Jan 2023")
+    end_date_2 = st.text_input("End Date (2)", placeholder="e.g., May 2023")
+    bullet_2_1 = st.text_area("Bullet Point 1 (2)", placeholder="e.g., Resolved client technical issues quickly.")
+    bullet_2_2 = st.text_area("Bullet Point 2 (2)", placeholder="e.g., Managed user accounts and hardware.")
+    bullet_2_3 = st.text_area("Bullet Point 3 (2)", placeholder="e.g., Automated common support scripts.")
+
+# ---- EXPERIENCE ENTRY 3 (optional) ----
+add_exp3 = st.checkbox("➕ Add One More Experience")
+
+if add_exp3:
+    st.markdown("#### 🔹 Experience 3")
+    job_title_3 = st.text_input("Job Title (3)", placeholder="e.g., Web Development Intern")
+    company_name_3 = st.text_input("Company Name (3)", placeholder="e.g., Freelance")
+    start_date_3 = st.text_input("Start Date (3)", placeholder="e.g., Sept 2022")
+    end_date_3 = st.text_input("End Date (3)", placeholder="e.g., Dec 2022")
+    bullet_3_1 = st.text_area("Bullet Point 1 (3)", placeholder="e.g., Designed website for a small business.")
+    bullet_3_2 = st.text_area("Bullet Point 2 (3)", placeholder="e.g., Maintained client satisfaction and UX.")
+    bullet_3_3 = st.text_area("Bullet Point 3 (3)", placeholder="e.g., Optimized website loading time.")
+
+# ==========================
+# Resume Preview Button
+# ==========================
+if st.button("📄 Generate Resume Preview"):
+    st.markdown("---")
+    st.subheader("📄 Resume Preview")
+
+    resume_text = f"""
+**{first_name} {last_name}**  
+{email} | {phone} | {github}
+
+---
+
+### 🎓 Education
+**{school}**  
+{degree}  
+Expected Graduation: {grad_date}
+"""
+
+    if summary != "":
+        resume_text += f"""
+---
+
+### 💡 Summary
+{summary}
+"""
+
+    # Add Experience 1 if filled
+    if job_title_1 != "" and company_name_1 != "":
+        resume_text += f"""
+---
+
+### 💼 Experience
+**{job_title_1}**, {company_name_1}  
+{start_date_1} – {end_date_1}
+"""
+        if bullet_1_1 != "":
+            resume_text += f"- {bullet_1_1}\n"
+        if bullet_1_2 != "":
+            resume_text += f"- {bullet_1_2}\n"
+        if bullet_1_3 != "":
+            resume_text += f"- {bullet_1_3}\n"
+
+    # Add Experience 2 if checkbox selected and info provided
+    if add_exp2 and job_title_2 != "" and company_name_2 != "":
+        resume_text += f"""
+**{job_title_2}**, {company_name_2}  
+{start_date_2} – {end_date_2}
+"""
+        if bullet_2_1 != "":
+            resume_text += f"- {bullet_2_1}\n"
+        if bullet_2_2 != "":
+            resume_text += f"- {bullet_2_2}\n"
+        if bullet_2_3 != "":
+            resume_text += f"- {bullet_2_3}\n"
+
+    # Add Experience 3 if checkbox selected and info provided
+    if add_exp3 and job_title_3 != "" and company_name_3 != "":
+        resume_text += f"""
+**{job_title_3}**, {company_name_3}  
+{start_date_3} – {end_date_3}
+"""
+        if bullet_3_1 != "":
+            resume_text += f"- {bullet_3_1}\n"
+        if bullet_3_2 != "":
+            resume_text += f"- {bullet_3_2}\n"
+        if bullet_3_3 != "":
+            resume_text += f"- {bullet_3_3}\n"
+
+    # Display the final formatted resume
+    st.code(resume_text, language="markdown")
+    st.success("✅ This is a preview. Copy or export it in the future!")
+
 
     st.subheader("Step 4: Add Summary (Optional)")
     summary = st.text_area("Professional Summary", placeholder="e.g., Passionate CS student with experience in...")

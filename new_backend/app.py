@@ -75,39 +75,39 @@ elif st.session_state.page == "Create":
 
     st.subheader("Step 3: Experience")
 
-# Set default values so Pylance knows these variables exist
-bullet_1_1 = ""
-bullet_1_2 = ""
-bullet_1_3 = ""
-job_title_1 = ""
-company_name_1 = ""
-start_date_1 = ""
-end_date_1 = ""
+    # Set default values so Pylance knows these variables exist
+    bullet_1_1 = ""
+    bullet_1_2 = ""
+    bullet_1_3 = ""
+    job_title_1 = ""
+    company_name_1 = ""
+    start_date_1 = ""
+    end_date_1 = ""
 
-# ---- EXPERIENCE ENTRY 1 ----
-st.markdown("#### 🔹 Experience 1")
-job_title_1 = st.text_input("Job Title (1)", placeholder="e.g., Software Engineer Intern")
-company_name_1 = st.text_input("Company Name (1)", placeholder="e.g., Google")
-start_date_1 = st.text_input("Start Date (1)", placeholder="e.g., June 2024")
-end_date_1 = st.text_input("End Date (1)", placeholder="e.g., August 2024 or Present")
-bullet_1_1 = st.text_area("Bullet Point 1 (1)", placeholder="e.g., Developed internal dashboard using Python.")
-bullet_1_2 = st.text_area("Bullet Point 2 (1)", placeholder="e.g., Worked on cloud deployment pipelines.")
-bullet_1_3 = st.text_area("Bullet Point 3 (1)", placeholder="e.g., Participated in daily agile standups.")
+    # ---- EXPERIENCE ENTRY 1 ----
+    st.markdown("#### 🔹 Experience 1")
+    job_title_1 = st.text_input("Job Title (1)", placeholder="e.g., Software Engineer Intern")
+    company_name_1 = st.text_input("Company Name (1)", placeholder="e.g., Google")
+    start_date_1 = st.text_input("Start Date (1)", placeholder="e.g., June 2024")
+    end_date_1 = st.text_input("End Date (1)", placeholder="e.g., August 2024 or Present")
+    bullet_1_1 = st.text_area("Bullet Point 1 (1)", placeholder="e.g., Developed internal dashboard using Python.")
+    bullet_1_2 = st.text_area("Bullet Point 2 (1)", placeholder="e.g., Worked on cloud deployment pipelines.")
+    bullet_1_3 = st.text_area("Bullet Point 3 (1)", placeholder="e.g., Participated in daily agile standups.")
 
 
-# Set default values so Pylance knows these variables exist
-bullet_2_1 = ""
-bullet_2_2 = ""
-bullet_2_3 = ""
-job_title_2 = ""
-company_name_2 = ""
-start_date_2 = ""
-end_date_2 = ""
+    # Set default values so Pylance knows these variables exist
+    bullet_2_1 = ""
+    bullet_2_2 = ""
+    bullet_2_3 = ""
+    job_title_2 = ""
+    company_name_2 = ""
+    start_date_2 = ""
+    end_date_2 = ""
 
-# ---- EXPERIENCE ENTRY 2 (optional) ----
-add_exp2 = st.checkbox("➕ Add Another Experience")
+    # ---- EXPERIENCE ENTRY 2 (optional) ----
+    add_exp2 = st.checkbox("➕ Add Another Experience")
 
-if add_exp2:
+    if add_exp2:
     st.markdown("#### 🔹 Experience 2")
     job_title_2 = st.text_input("Job Title (2)", placeholder="e.g., IT Support Specialist")
     company_name_2 = st.text_input("Company Name (2)", placeholder="e.g., Local Tech Co.")
@@ -117,19 +117,19 @@ if add_exp2:
     bullet_2_2 = st.text_area("Bullet Point 2 (2)", placeholder="e.g., Managed user accounts and hardware.")
     bullet_2_3 = st.text_area("Bullet Point 3 (2)", placeholder="e.g., Automated common support scripts.")
 
-# Set default values so Pylance knows these variables exist
-bullet_3_1 = ""
-bullet_3_2 = ""
-bullet_3_3 = ""
-job_title_3 = ""
-company_name_3 = ""
-start_date_3 = ""
-end_date_3 = ""
+    # Set default values so Pylance knows these variables exist
+    bullet_3_1 = ""
+    bullet_3_2 = ""
+    bullet_3_3 = ""
+    job_title_3 = ""
+    company_name_3 = ""
+    start_date_3 = ""
+    end_date_3 = ""
 
-# ---- EXPERIENCE ENTRY 3 (optional) ----
-add_exp3 = st.checkbox("➕ Add One More Experience")
+    # ---- EXPERIENCE ENTRY 3 (optional) ----
+    add_exp3 = st.checkbox("➕ Add One More Experience")
 
-if add_exp3:
+    if add_exp3:
     st.markdown("#### 🔹 Experience 3")
     job_title_3 = st.text_input("Job Title (3)", placeholder="e.g., Web Development Intern")
     company_name_3 = st.text_input("Company Name (3)", placeholder="e.g., Freelance")
@@ -139,73 +139,73 @@ if add_exp3:
     bullet_3_2 = st.text_area("Bullet Point 2 (3)", placeholder="e.g., Maintained client satisfaction and UX.")
     bullet_3_3 = st.text_area("Bullet Point 3 (3)", placeholder="e.g., Optimized website loading time.")
 
-# ==========================
-# Resume Preview Button
-# ==========================
-if st.button("📄 Generate Resume Preview"):
+    # ==========================
+    # Resume Preview Button
+    # ==========================
+    if st.button("📄 Generate Resume Preview"):
     st.markdown("---")
     st.subheader("📄 Resume Preview")
 
     resume_text = f"""
-**{first_name} {last_name}**  
-{email} | {phone} | {github}
+    **{first_name} {last_name}**  
+    {email} | {phone} | {github}
 
----
+    ---
 
-### 🎓 Education
-**{school}**  
-{degree}  
-Expected Graduation: {grad_date}
-"""
+    ### 🎓 Education
+    **{school}**  
+    {degree}  
+    Expected Graduation: {grad_date}
+    """
 
     if summary != "":
-        resume_text += f"""
----
+    resume_text += f"""
+    ---
 
-### 💡 Summary
-{summary}
-"""
+    ### 💡 Summary
+    {summary}
+    """
 
     # Add Experience 1 if filled
     if job_title_1 != "" and company_name_1 != "":
-        resume_text += f"""
----
-### 💼 Experience
-**{job_title_1}**, {company_name_1}  
-{start_date_1} – {end_date_1}
-"""
-        if bullet_1_1 != "":
-            resume_text += f"- {bullet_1_1}\n"
-        if bullet_1_2 != "":
-            resume_text += f"- {bullet_1_2}\n"
-        if bullet_1_3 != "":
-            resume_text += f"- {bullet_1_3}\n"
+    resume_text += f"""
+    ---
+    ### 💼 Experience
+    **{job_title_1}**, {company_name_1}  
+    {start_date_1} – {end_date_1}
+    """
+    if bullet_1_1 != "":
+        resume_text += f"- {bullet_1_1}\n"
+    if bullet_1_2 != "":
+        resume_text += f"- {bullet_1_2}\n"
+    if bullet_1_3 != "":
+        resume_text += f"- {bullet_1_3}\n"
 
     # Add Experience 2 if checkbox selected and info provided
     if add_exp2 and job_title_2 != "" and company_name_2 != "":
-        resume_text += f"""
-**{job_title_2}**, {company_name_2}  
-{start_date_2} – {end_date_2}
-"""
-        if bullet_2_1 != "":
-            resume_text += f"- {bullet_2_1}\n"
-        if bullet_2_2 != "":
-            resume_text += f"- {bullet_2_2}\n"
-        if bullet_2_3 != "":
-            resume_text += f"- {bullet_2_3}\n"
+    resume_text += f"""
+    **{job_title_2}**, {company_name_2}  
+    {start_date_2} – {end_date_2}
+    """
+    if bullet_2_1 != "":
+        resume_text += f"- {bullet_2_1}\n"
+    if bullet_2_2 != "":
+        resume_text += f"- {bullet_2_2}\n"
+    if bullet_2_3 != "":
+        resume_text += f"- {bullet_2_3}\n"
 
     # Add Experience 3 if checkbox selected and info provided
     if add_exp3 and job_title_3 != "" and company_name_3 != "":
-        resume_text += f"""
-**{job_title_3}**, {company_name_3}  
-{start_date_3} – {end_date_3}
-"""
-        if bullet_3_1 != "":
-            resume_text += f"- {bullet_3_1}\n"
-        if bullet_3_2 != "":
-            resume_text += f"- {bullet_3_2}\n"
-        if bullet_3_3 != "":
-            resume_text += f"- {bullet_3_3}\n"
+    resume_text += f"""
+    **{job_title_3}**, {company_name_3}  
+    {start_date_3} – {end_date_3}
+    """
+    if bullet_3_1 != "":
+        resume_text += f"- {bullet_3_1}\n"
+    if bullet_3_2 != "":
+        resume_text += f"- {bullet_3_2}\n"
+    if bullet_3_3 != "":
+        resume_text += f"- {bullet_3_3}\n"
 
     # Display the final formatted resume
     st.code(resume_text, language="markdown")
@@ -218,30 +218,30 @@ Expected Graduation: {grad_date}
 
 # Improve Resume
 elif st.session_state.page == "Improve":
-    st.title("📄 Improve Resume")
-    st.subheader("Upload your resume and get better bullet points")
+st.title("📄 Improve Resume")
+st.subheader("Upload your resume and get better bullet points")
 
-    role = st.text_input("Target Job Title", placeholder="e.g., Software Engineer")
-    uploaded_file = st.file_uploader("Upload your resume (PDF)", type=["pdf"])
+role = st.text_input("Target Job Title", placeholder="e.g., Software Engineer")
+uploaded_file = st.file_uploader("Upload your resume (PDF)", type=["pdf"])
 
-    if uploaded_file and role:
-        resume_text = extract_text_from_pdf(uploaded_file)
+if uploaded_file and role:
+resume_text = extract_text_from_pdf(uploaded_file)
 
-        prompt = (
-            f"Here's a resume:\n\n{resume_text}\n\n"
-            f"Suggest bullet point improvements for the role of '{role}'. "
-            f"Use the XYZ format (Accomplished X by doing Y as measured by Z)."
-        )
+prompt = (
+    f"Here's a resume:\n\n{resume_text}\n\n"
+    f"Suggest bullet point improvements for the role of '{role}'. "
+    f"Use the XYZ format (Accomplished X by doing Y as measured by Z)."
+)
 
-        with st.spinner("Improving your resume..."):
-            response = client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[{"role": "user", "content": prompt}]
-            )
-            suggestions = response.choices[0].message.content
+with st.spinner("Improving your resume..."):
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt}]
+    )
+    suggestions = response.choices[0].message.content
 
-        st.success("Suggestions ready!")
-        st.markdown(suggestions)
+st.success("Suggestions ready!")
+st.markdown(suggestions)
 
 # Tailor Resume
 elif st.session_state.page == "Tailor":

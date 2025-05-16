@@ -219,8 +219,6 @@ elif st.session_state.page == "Improve":
 
         st.success("Suggestions ready!")
         st.markdown(suggestions)
-# --- Tailor Resume ---
-
 
 # Tailor Resume
 elif st.session_state.page == "Tailor":

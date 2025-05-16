@@ -119,8 +119,35 @@ elif st.session_state.page == "Create":
         bullet_3_2 = st.text_area("Bullet Point 2 (3)", placeholder="e.g., Maintained client satisfaction and UX.")
         bullet_3_3 = st.text_area("Bullet Point 3 (3)", placeholder="e.g., Optimized website loading time.")
 
-    st.subheader("Step 4: Add Summary (Optional)")
-    summary = st.text_area("Professional Summary", placeholder="e.g., Passionate CS student with experience in...")
+    st.subheader("Step 4: Projects")
+
+    # Set default values for Pylance/type hints
+    project_name_1 = project_desc_1 = project_tech_1 = ""
+    project_name_2 = project_desc_2 = project_tech_2 = ""
+    project_name_3 = project_desc_3 = project_tech_3 = ""
+
+    # ---- PROJECT 1 ----
+    st.markdown("#### 🔸 Project 1")
+    project_name_1 = st.text_input("Project Name (1)", placeholder="e.g., Smart Parking App")
+    project_desc_1 = st.text_area("Description (1)", placeholder="e.g., A web app that helps users find real-time parking spots.")
+    project_tech_1 = st.text_input("Technologies Used (1)", placeholder="e.g., React, Node.js, Firebase")
+
+    # Optional Project 2
+    add_proj2 = st.checkbox("➕ Add Another Project")
+    if add_proj2:
+        st.markdown("#### 🔸 Project 2")
+        project_name_2 = st.text_input("Project Name (2)", placeholder="e.g., Resume Builder Tool")
+        project_desc_2 = st.text_area("Description (2)", placeholder="e.g., A Python-based CLI tool for creating resumes.")
+        project_tech_2 = st.text_input("Technologies Used (2)", placeholder="e.g., Python, Rich Library")
+
+    # Optional Project 3
+    add_proj3 = st.checkbox("➕ Add One More Project")
+    if add_proj3:
+        st.markdown("#### 🔸 Project 3")
+        project_name_3 = st.text_input("Project Name (3)", placeholder="e.g., AI Chatbot")
+        project_desc_3 = st.text_area("Description (3)", placeholder="e.g., A chatbot using OpenAI GPT for mental health check-ins.")
+        project_tech_3 = st.text_input("Technologies Used (3)", placeholder="e.g., Python, Streamlit, OpenAI API")
+
 
     # ==========================
     # Resume Preview Button

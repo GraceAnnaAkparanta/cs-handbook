@@ -196,29 +196,30 @@ Expected Graduation: {grad_date}
 # Improve Resume
 elif st.session_state.page == "Improve":
     st.title("📄 Improve Resume")
-st.subheader("Upload your resume and get better bullet points")
+    st.subheader("Upload your resume and get better bullet points")
 
-role = st.text_input("Target Job Title", placeholder="e.g., Software Engineer")
-uploaded_file = st.file_uploader("Upload your resume (PDF)", type=["pdf"])
+    role = st.text_input("Target Job Title", placeholder="e.g., Software Engineer")
+    uploaded_file = st.file_uploader("Upload your resume (PDF)", type=["pdf"])
 
-if uploaded_file and role:
-    resume_text = extract_text_from_pdf(uploaded_file)
+    if uploaded_file and role:
+        resume_text = extract_text_from_pdf(uploaded_file)
 
-prompt = (
-    f"Here's a resume:\n\n{resume_text}\n\n"
-    f"Suggest bullet point improvements for the role of '{role}'. "
-    f"Use the XYZ format (Accomplished X by doing Y as measured by Z)."
-)
+        prompt = (
+            f"Here's a resume:\n\n{resume_text}\n\n"
+            f"Suggest bullet point improvements for the role of '{role}'. "
+            f"Use the XYZ format (Accomplished X by doing Y as measured by Z)."
+        )
 
-with st.spinner("Improving your resume..."):
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}]
-    )
-    suggestions = response.choices[0].message.content
+        with st.spinner("Improving your resume..."):
+            response = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[{"role": "user", "content": prompt}]
+            )
+            suggestions = response.choices[0].message.content
 
-st.success("Suggestions ready!")
-st.markdown(suggestions)
+        st.success("Suggestions ready!")
+        st.markdown(suggestions)
+
 
 # Tailor Resume
 elif st.session_state.page == "Tailor":

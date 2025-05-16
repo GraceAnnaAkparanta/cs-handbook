@@ -181,91 +181,74 @@ elif st.session_state.page == "Create":
         project_tech_3 = st.text_input("Technologies Used (3)", placeholder="e.g., Python, Streamlit, OpenAI API")
 
 
-    # ==========================
-    # Resume Preview Button
-    # ==========================
-    if st.button("📄 Generate Resume Preview"):
-        st.markdown("---")
-        st.subheader("📄 Resume Preview")
+    def generate_resume_preview():
+        preview = f"""**{first_name} {last_name}**  
+    {email} | {phone} | {github}
 
-        resume_text = f"""
-**{first_name} {last_name}**  
-{email} | {phone} | {github}
+    ---
 
----
+    ### 🎓 Education  
+    **{school}**  
+    {degree}  
+    Expected Graduation: {grad_date}
+    """
+        # Projects
+        if project_name_1:
+            preview += f"""
 
-### 🎓 Education  
-**{school}**  
-{degree}  
-Expected Graduation: {grad_date}
-"""
+    ---
 
-# --- PROJECTS SECTION ---
-if project_name_1 != "":
-    resume_text += f"""
----
+    ### 🛠️ Projects  
+    **{project_name_1}**  
+    {project_desc_1}  
+    _Tech Used: {project_tech_1}_  
+    """
+            if add_proj2 and project_name_2:
+                preview += f"""
+    **{project_name_2}**  
+    {project_desc_2}  
+    _Tech Used: {project_tech_2}_  
+    """
+            if add_proj3 and project_name_3:
+                preview += f"""
+    **{project_name_3}**  
+    {project_desc_3}  
+    _Tech Used: {project_tech_3}_  
+    """
 
-### 🛠️ Projects  
-**{project_name_1}**  
-{project_desc_1}  
-_Tech Used: {project_tech_1}_  
-"""
-    if add_proj2 and project_name_2 != "":
-        resume_text += f"""
-**{project_name_2}**  
-{project_desc_2}  
-_Tech Used: {project_tech_2}_  
-"""
-    if add_proj3 and project_name_3 != "":
-        resume_text += f"""
-**{project_name_3}**  
-{project_desc_3}  
-_Tech Used: {project_tech_3}_  
-"""
+        # Experience
+        if job_title_1 and company_name_1:
+            preview += f"""
 
+    ---
 
-        if job_title_1 != "" and company_name_1 != "":
-            resume_text += f"""
----
+    ### 💼 Experience  
+    **{job_title_1}**, {company_name_1}  
+    {start_date_1} – {end_date_1}
+    """
+            for bullet in [bullet_1_1, bullet_1_2, bullet_1_3]:
+                if bullet:
+                    preview += f"- {bullet}\n"
 
-### 💼 Experience  
-**{job_title_1}**, {company_name_1}  
-{start_date_1} – {end_date_1}
-"""
-            if bullet_1_1 != "":
-                resume_text += f"- {bullet_1_1}\n"
-            if bullet_1_2 != "":
-                resume_text += f"- {bullet_1_2}\n"
-            if bullet_1_3 != "":
-                resume_text += f"- {bullet_1_3}\n"
+        if add_exp2 and job_title_2 and company_name_2:
+            preview += f"""
+    **{job_title_2}**, {company_name_2}  
+    {start_date_2} – {end_date_2}
+    """
+            for bullet in [bullet_2_1, bullet_2_2, bullet_2_3]:
+                if bullet:
+                    preview += f"- {bullet}\n"
 
-        if add_exp2 and job_title_2 != "" and company_name_2 != "":
-            resume_text += f"""
-**{job_title_2}**, {company_name_2}  
-{start_date_2} – {end_date_2}
-"""
-            if bullet_2_1 != "":
-                resume_text += f"- {bullet_2_1}\n"
-            if bullet_2_2 != "":
-                resume_text += f"- {bullet_2_2}\n"
-            if bullet_2_3 != "":
-                resume_text += f"- {bullet_2_3}\n"
+        if add_exp3 and job_title_3 and company_name_3:
+            preview += f"""
+    **{job_title_3}**, {company_name_3}  
+    {start_date_3} – {end_date_3}
+    """
+            for bullet in [bullet_3_1, bullet_3_2, bullet_3_3]:
+                if bullet:
+                    preview += f"- {bullet}\n"
 
-        if add_exp3 and job_title_3 != "" and company_name_3 != "":
-            resume_text += f"""
-**{job_title_3}**, {company_name_3}  
-{start_date_3} – {end_date_3}
-"""
-            if bullet_3_1 != "":
-                resume_text += f"- {bullet_3_1}\n"
-            if bullet_3_2 != "":
-                resume_text += f"- {bullet_3_2}\n"
-            if bullet_3_3 != "":
-                resume_text += f"- {bullet_3_3}\n"
-
-        # Display the final formatted resume
-        st.code(resume_text, language="markdown")
-        st.success("✅ This is a preview. Copy or export it in the future!")
+        return preview
 
 
 # Improve Resume
@@ -341,3 +324,4 @@ elif st.session_state.page == "Chat":
 # Footer
 st.markdown("---")
 st.markdown("🔍 *This tool uses AI. Always double-check results before using.*")
+

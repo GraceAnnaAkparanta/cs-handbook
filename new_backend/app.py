@@ -14,27 +14,27 @@ client = OpenAI(api_key=api_key)
 st.set_page_config(page_title="Resume Improver | CS Handbook", page_icon="📒")
 
 
-# ========== Define Shared Variables ==========
-# Resume-related
-first_name = last_name = email = phone = github = ""
-school = degree = grad_date = ""
-job_title_1 = company_name_1 = start_date_1 = end_date_1 = ""
-bullet_1_1 = bullet_1_2 = bullet_1_3 = ""
-job_title_2 = company_name_2 = start_date_2 = end_date_2 = ""
-bullet_2_1 = bullet_2_2 = bullet_2_3 = ""
-job_title_3 = company_name_3 = start_date_3 = end_date_3 = ""
-bullet_3_1 = bullet_3_2 = bullet_3_3 = ""
-summary = ""
+# # ========== Define Shared Variables ==========
+# # Resume-related
+# first_name = last_name = email = phone = github = ""
+# school = degree = grad_date = ""
+# job_title_1 = company_name_1 = start_date_1 = end_date_1 = ""
+# bullet_1_1 = bullet_1_2 = bullet_1_3 = ""
+# job_title_2 = company_name_2 = start_date_2 = end_date_2 = ""
+# bullet_2_1 = bullet_2_2 = bullet_2_3 = ""
+# job_title_3 = company_name_3 = start_date_3 = end_date_3 = ""
+# bullet_3_1 = bullet_3_2 = bullet_3_3 = ""
+# summary = ""
 
-# Project-related
-project_name_1 = project_desc_1 = project_tech_1 = ""
-project_name_2 = project_desc_2 = project_tech_2 = ""
-project_name_3 = project_desc_3 = project_tech_3 = ""
+# # Project-related
+# project_name_1 = project_desc_1 = project_tech_1 = ""
+# project_name_2 = project_desc_2 = project_tech_2 = ""
+# project_name_3 = project_desc_3 = project_tech_3 = ""
 
-add_exp2 = False
-add_exp3 = False
-add_proj2 = False
-add_proj3 = False
+# add_exp2 = False
+# add_exp3 = False
+# add_proj2 = False
+# add_proj3 = False
 
 
 # Sidebar navigation

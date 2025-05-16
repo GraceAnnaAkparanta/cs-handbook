@@ -79,6 +79,14 @@ elif st.session_state.page == "Create":
     bullet_1_1 = bullet_1_2 = bullet_1_3 = ""
     job_title_1 = company_name_1 = start_date_1 = end_date_1 = ""
 
+    # Set default values for project variables
+    project_name_1 = project_desc_1 = project_tech_1 = ""
+    project_name_2 = project_desc_2 = project_tech_2 = ""
+    project_name_3 = project_desc_3 = project_tech_3 = ""
+    add_proj2 = False
+    add_proj3 = False
+
+
     # ---- EXPERIENCE ENTRY 1 ----
     st.markdown("#### 🔹 Experience 1")
     job_title_1 = st.text_input("Job Title (1)", placeholder="e.g., Software Engineer Intern")

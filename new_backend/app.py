@@ -75,16 +75,16 @@ elif st.session_state.page == "Create":
 
     st.subheader("Step 3: Experience")
 
-    # Set default values so Pylance knows these variables exist
-    bullet_1_1 = bullet_1_2 = bullet_1_3 = ""
-    job_title_1 = company_name_1 = start_date_1 = end_date_1 = ""
+    # # Set default values so Pylance knows these variables exist
+    # bullet_1_1 = bullet_1_2 = bullet_1_3 = ""
+    # job_title_1 = company_name_1 = start_date_1 = end_date_1 = ""
 
-    # Set default values for project variables
-    project_name_1 = project_desc_1 = project_tech_1 = ""
-    project_name_2 = project_desc_2 = project_tech_2 = ""
-    project_name_3 = project_desc_3 = project_tech_3 = ""
-    add_proj2 = False
-    add_proj3 = False
+    # # Set default values for project variables
+    # project_name_1 = project_desc_1 = project_tech_1 = ""
+    # project_name_2 = project_desc_2 = project_tech_2 = ""
+    # project_name_3 = project_desc_3 = project_tech_3 = ""
+    # add_proj2 = False
+    # add_proj3 = False
 
 
     # ---- EXPERIENCE ENTRY 1 ----

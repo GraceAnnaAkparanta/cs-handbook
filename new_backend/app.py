@@ -168,13 +168,29 @@ elif st.session_state.page == "Create":
 Expected Graduation: {grad_date}
 """
 
-        if summary != "":
-            resume_text += f"""
+# --- PROJECTS SECTION ---
+if project_name_1 != "":
+    resume_text += f"""
 ---
 
-### 💡 Summary  
-{summary}
+### 🛠️ Projects  
+**{project_name_1}**  
+{project_desc_1}  
+_Tech Used: {project_tech_1}_  
 """
+    if add_proj2 and project_name_2 != "":
+        resume_text += f"""
+**{project_name_2}**  
+{project_desc_2}  
+_Tech Used: {project_tech_2}_  
+"""
+    if add_proj3 and project_name_3 != "":
+        resume_text += f"""
+**{project_name_3}**  
+{project_desc_3}  
+_Tech Used: {project_tech_3}_  
+"""
+
 
         if job_title_1 != "" and company_name_1 != "":
             resume_text += f"""

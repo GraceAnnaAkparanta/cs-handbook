@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 # Adding to enable downloading pdfs
 from fpdf import FPDF
-import base64
+import io
 
 def create_pdf(text):
     pdf = FPDF()
@@ -14,10 +14,16 @@ def create_pdf(text):
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.set_font("Arial", size=12)
 
-    # Add each line separately to handle line breaks properly
-    for line in text.split('\n'):
+    # Break text into lines that fit the page width
+    lines = text.split('\n')
+    for line in lines:
         pdf.multi_cell(0, 10, line)
-    return pdf.output(dest='S').encode('latin1')  # Return bytes
+
+    # Save PDF to bytes buffer
+    pdf_buffer = io.BytesIO()
+    pdf.output(pdf_buffer)
+    pdf_buffer.seek(0)
+    return pdf_buffer
 # Adding to enable downloading pdfs
 
 # Load environment variables

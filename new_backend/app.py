@@ -275,13 +275,6 @@ elif st.session_state.page == "Create":
                 mime="application/pdf"
             )
 
-
-if st.button("Test Download"):
-    sample_pdf = create_pdf("Hello, this is a test.")
-    st.download_button("Download Test PDF", data=sample_pdf, file_name="test.pdf", mime="application/pdf")
-
-
-
 # Improve Resume
 elif st.session_state.page == "Improve":
     st.title("📄 Improve Resume")

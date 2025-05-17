@@ -249,12 +249,17 @@ elif st.session_state.page == "Create":
                     preview += f"- {bullet}\n"
 
         return preview
-
+    
+    # ==========================
+    # Resume Preview Button
+    # ==========================
     if st.button("📄 Generate Resume Preview"):
         st.markdown("---")
         st.subheader("📄 Resume Preview")
-        st.code(generate_resume_preview(), language="markdown")
-        st.success("✅ This is a preview. Copy or export it in the future!")
+
+        preview = generate_resume_preview()
+        st.markdown(preview)
+
 
 
 # Improve Resume

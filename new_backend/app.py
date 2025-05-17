@@ -8,6 +8,28 @@ from openai import OpenAI
 from fpdf import FPDF
 import io
 
+# error
+import re
+
+def remove_non_latin1(text):
+    # Remove any character not encodable in latin-1 (e.g., emojis)
+    return ''.join(c for c in text if ord(c) < 256)
+
+def create_pdf(text):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+    
+    clean_text = remove_non_latin1(text)
+    for line in clean_text.split("\n"):
+        pdf.multi_cell(0, 10, line)
+    
+    # Use latin-1 because FPDF default encoding is limited
+    pdf_output = pdf.output(dest='S').encode('latin-1')
+    return pdf_output
+
+# error
+
 def create_pdf(text):
     pdf = FPDF()
     pdf.add_page()

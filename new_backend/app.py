@@ -257,7 +257,6 @@ elif st.session_state.page == "Create":
     # ==========================
     # Resume Preview Button
     # ==========================
-
     if st.button("📄 Generate Resume Preview"):
         st.markdown("---")
         st.subheader("📄 Resume Preview")
@@ -265,14 +264,16 @@ elif st.session_state.page == "Create":
         preview = generate_resume_preview()
         st.markdown(preview)
 
-        # Generate PDF and show download button
-        pdf_bytes = create_pdf(preview)
-        st.download_button(
-            label="📥 Download Resume as PDF",
-            data=pdf_bytes,
-            file_name="resume.pdf",
-            mime="application/pdf"
-        )
+        # Only generate PDF after preview is created
+        if preview.strip():
+            pdf_bytes = create_pdf(preview)
+            st.download_button(
+                label="📥 Download Resume as PDF",
+                data=pdf_bytes,
+                file_name="resume.pdf",
+                mime="application/pdf"
+            )
+
 
 
 

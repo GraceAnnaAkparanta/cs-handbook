@@ -4,6 +4,21 @@ import tempfile
 import PyPDF2
 from dotenv import load_dotenv
 from openai import OpenAI
+# Adding to enable downloading pdfs
+from fpdf import FPDF
+import base64
+
+def create_pdf(text):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.set_font("Arial", size=12)
+
+    # Add each line separately to handle line breaks properly
+    for line in text.split('\n'):
+        pdf.multi_cell(0, 10, line)
+    return pdf.output(dest='S').encode('latin1')  # Return bytes
+# Adding to enable downloading pdfs
 
 # Load environment variables
 load_dotenv()

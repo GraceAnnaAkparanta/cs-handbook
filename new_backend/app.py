@@ -197,73 +197,57 @@ elif st.session_state.page == "Create":
 
 
     def generate_resume_preview():
-        preview = f"""**{first_name} {last_name}**  
-    {email} | {phone} | {github}
+        preview = ""
 
-    ---
+        # === Header Info ===
+        if first_name and last_name:
+            preview += f"**{first_name} {last_name}**  \n"
+        if email or phone or github:
+            contact_info = " | ".join(filter(None, [email, phone, github]))
+            preview += f"{contact_info}\n"
 
-    ### 🎓 Education  
-    **{school}**  
-    {degree}  
-    Expected Graduation: {grad_date}
-    """
-        # Projects
+        preview += "\n---\n\n"
+
+        # === Education ===
+        preview += "### 🎓 Education  \n"
+        if school:
+            preview += f"**{school}**  \n"
+        if degree:
+            preview += f"{degree}  \n"
+        if grad_date:
+            preview += f"Expected Graduation: {grad_date}\n"
+
+        # === Projects ===
         if project_name_1:
-            preview += f"""
+            preview += "\n\n---\n\n### 🛠️ Projects\n"
+            preview += f"**{project_name_1}**  \n{project_desc_1}  \n_Tech Used: {project_tech_1}_\n"
+        if add_proj2 and project_name_2:
+            preview += f"\n**{project_name_2}**  \n{project_desc_2}  \n_Tech Used: {project_tech_2}_\n"
+        if add_proj3 and project_name_3:
+            preview += f"\n**{project_name_3}**  \n{project_desc_3}  \n_Tech Used: {project_tech_3}_\n"
 
-    ---
-
-    ### 🛠️ Projects  
-    **{project_name_1}**  
-    {project_desc_1}  
-    _Tech Used: {project_tech_1}_  
-    """
-            if add_proj2 and project_name_2:
-                preview += f"""
-    **{project_name_2}**  
-    {project_desc_2}  
-    _Tech Used: {project_tech_2}_  
-    """
-            if add_proj3 and project_name_3:
-                preview += f"""
-    **{project_name_3}**  
-    {project_desc_3}  
-    _Tech Used: {project_tech_3}_  
-    """
-
-        # Experience
+        # === Experience ===
         if job_title_1 and company_name_1:
-            preview += f"""
-
-    ---
-
-    ### 💼 Experience  
-    **{job_title_1}**, {company_name_1}  
-    {start_date_1} – {end_date_1}
-    """
+            preview += "\n\n---\n\n### 💼 Experience\n"
+            preview += f"**{job_title_1}**, {company_name_1}  \n{start_date_1} – {end_date_1}\n"
             for bullet in [bullet_1_1, bullet_1_2, bullet_1_3]:
                 if bullet:
                     preview += f"- {bullet}\n"
 
         if add_exp2 and job_title_2 and company_name_2:
-            preview += f"""
-    **{job_title_2}**, {company_name_2}  
-    {start_date_2} – {end_date_2}
-    """
+            preview += f"\n**{job_title_2}**, {company_name_2}  \n{start_date_2} – {end_date_2}\n"
             for bullet in [bullet_2_1, bullet_2_2, bullet_2_3]:
                 if bullet:
                     preview += f"- {bullet}\n"
 
         if add_exp3 and job_title_3 and company_name_3:
-            preview += f"""
-    **{job_title_3}**, {company_name_3}  
-    {start_date_3} – {end_date_3}
-    """
+            preview += f"\n**{job_title_3}**, {company_name_3}  \n{start_date_3} – {end_date_3}\n"
             for bullet in [bullet_3_1, bullet_3_2, bullet_3_3]:
                 if bullet:
                     preview += f"- {bullet}\n"
 
         return preview
+
     
     # ==========================
     # Resume Preview Button

@@ -280,9 +280,9 @@ elif st.session_state.page == "Create":
     # ==========================
     # Resume Preview Button
     # ==========================
-    if st.button("📄 Generate Resume Preview"):
+    if st.button(" Generate Resume Preview"):
         st.markdown("---")
-        st.subheader("📄 Resume Preview")
+        st.subheader(" Resume Preview")
 
         preview = generate_resume_preview()
         st.markdown(preview)

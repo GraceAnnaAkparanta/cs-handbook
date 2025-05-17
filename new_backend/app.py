@@ -18,10 +18,11 @@ def create_pdf(text):
     for line in lines:
         pdf.multi_cell(0, 10, line)
 
-    # Save to a BytesIO buffer
-    pdf_buffer = io.BytesIO()
-    pdf.output(pdf_buffer)
-    pdf_buffer.seek(0)
+    # Get PDF content as bytes
+    pdf_output = pdf.output(dest='S').encode('latin-1')
+
+    # Save to BytesIO buffer
+    pdf_buffer = io.BytesIO(pdf_output)
     return pdf_buffer
 # Adding to enable downloading pdfs
 

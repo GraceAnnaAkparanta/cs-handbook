@@ -4,49 +4,49 @@ import tempfile
 import PyPDF2
 from dotenv import load_dotenv
 from openai import OpenAI
-# Adding to enable downloading pdfs
-from fpdf import FPDF
-import io
+# # Adding to enable downloading pdfs
+# from fpdf import FPDF
+# import io
 
-# error
-import re
+# # error
+# import re
 
-def remove_non_latin1(text):
-    # Remove any character not encodable in latin-1 (e.g., emojis)
-    return ''.join(c for c in text if ord(c) < 256)
+# def remove_non_latin1(text):
+#     # Remove any character not encodable in latin-1 (e.g., emojis)
+#     return ''.join(c for c in text if ord(c) < 256)
 
-def create_pdf(text):
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Arial", size=12)
+# def create_pdf(text):
+#     pdf = FPDF()
+#     pdf.add_page()
+#     pdf.set_font("Arial", size=12)
     
-    clean_text = remove_non_latin1(text)
-    for line in clean_text.split("\n"):
-        pdf.multi_cell(0, 10, line)
+#     clean_text = remove_non_latin1(text)
+#     for line in clean_text.split("\n"):
+#         pdf.multi_cell(0, 10, line)
     
-    # Use latin-1 because FPDF default encoding is limited
-    pdf_output = pdf.output(dest='S').encode('latin-1')
-    return pdf_output
+#     # Use latin-1 because FPDF default encoding is limited
+#     pdf_output = pdf.output(dest='S').encode('latin-1')
+#     return pdf_output
 
-# error
+# # error
 
-def create_pdf(text):
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_auto_page_break(auto=True, margin=15)
-    pdf.set_font("Arial", size=12)
+# def create_pdf(text):
+#     pdf = FPDF()
+#     pdf.add_page()
+#     pdf.set_auto_page_break(auto=True, margin=15)
+#     pdf.set_font("Arial", size=12)
 
-    lines = text.split('\n')
-    for line in lines:
-        pdf.multi_cell(0, 10, line)
+#     lines = text.split('\n')
+#     for line in lines:
+#         pdf.multi_cell(0, 10, line)
 
-    # Get PDF content as bytes
-    pdf_output = pdf.output(dest='S').encode('latin-1')
+#     # Get PDF content as bytes
+#     pdf_output = pdf.output(dest='S').encode('latin-1')
 
-    # Save to BytesIO buffer
-    pdf_buffer = io.BytesIO(pdf_output)
-    return pdf_buffer
-# Adding to enable downloading pdfs
+#     # Save to BytesIO buffer
+#     pdf_buffer = io.BytesIO(pdf_output)
+#     return pdf_buffer
+# # Adding to enable downloading pdfs
 
 # Load environment variables
 load_dotenv()
@@ -287,15 +287,18 @@ elif st.session_state.page == "Create":
         preview = generate_resume_preview()
         st.markdown(preview)
 
-        # Only generate PDF after preview is created
-        if preview.strip():
-            pdf_bytes = create_pdf(preview)
-            st.download_button(
-                label="📥 Download Resume as PDF",
-                data=pdf_bytes,
-                file_name="resume.pdf",
-                mime="application/pdf"
-            )
+        st.code(preview, language="markdown")
+        st.success("✅ Resume preview ready! You can copy and paste it into your own document.")
+
+        # # Only generate PDF after preview is created
+        # if preview.strip():
+        #     pdf_bytes = create_pdf(preview)
+        #     st.download_button(
+        #         label="📥 Download Resume as PDF",
+        #         data=pdf_bytes,
+        #         file_name="resume.pdf",
+        #         mime="application/pdf"
+        #     )
 
 # Improve Resume
 elif st.session_state.page == "Improve":

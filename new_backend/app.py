@@ -14,12 +14,11 @@ def create_pdf(text):
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.set_font("Arial", size=12)
 
-    # Break text into lines that fit the page width
     lines = text.split('\n')
     for line in lines:
         pdf.multi_cell(0, 10, line)
 
-    # Save PDF to bytes buffer
+    # Save to a BytesIO buffer
     pdf_buffer = io.BytesIO()
     pdf.output(pdf_buffer)
     pdf_buffer.seek(0)

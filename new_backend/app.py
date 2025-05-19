@@ -374,3 +374,4 @@ elif st.session_state.page == "Chat":
 st.markdown("---")
 st.markdown("🔍 *This tool uses AI. Always double-check results before using.*")
 
+# updated code on second computer!
